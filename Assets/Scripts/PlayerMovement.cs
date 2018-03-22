@@ -13,6 +13,10 @@ public class PlayerMovement : MonoBehaviour
 
     public event EventHandler<MoveTileEventArgs> MoveToTileDone;
 
+    private MoveTile adjacentTile;
+    private MoveTile previousTile;
+    private Coroutine moveToTileRoutine;
+
     private bool direction;
     public bool Direction
     {
@@ -23,16 +27,18 @@ public class PlayerMovement : MonoBehaviour
         set
         {
             direction = value;
+            CurrentTile = previousTile;
+            previousTile = adjacentTile;
             SetAdjacentTile();
         }
     }
 
-    private MoveTile adjacentTile;
-    private Coroutine moveToTileRoutine;
+   
 
     private void Start()
     {
         moveToTileRoutine = null;
+        previousTile = CurrentTile;
         Direction = true;
         MovePlayer();
     }
@@ -53,10 +59,6 @@ public class PlayerMovement : MonoBehaviour
         {
             moveToTileRoutine = StartCoroutine(MoveToTile());
         }
-        else
-        {
-            Debug.Log("wassup");
-        }
     }
 
     private IEnumerator MoveToTile()
@@ -64,16 +66,16 @@ public class PlayerMovement : MonoBehaviour
         if(adjacentTile != null)
         {
             var distance = 0f;
+            previousTile = CurrentTile;
+            SetAdjacentTile();
+            CurrentTile = adjacentTile;
             do
             {
-                var direction = adjacentTile.transform.position - CurrentTile.transform.position;
-                distance = (adjacentTile.transform.position - transform.position).sqrMagnitude;
+                var direction = CurrentTile.transform.position - previousTile.transform.position;
+                distance = (CurrentTile.transform.position - transform.position).sqrMagnitude;
                 transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
                 yield return null;
             } while(distance > 0.001);
-
-            CurrentTile = adjacentTile;
-            SetAdjacentTile();
         }
 
         var handler = MoveToTileDone;
