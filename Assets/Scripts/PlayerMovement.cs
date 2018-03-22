@@ -13,8 +13,27 @@ public class PlayerMovement : MonoBehaviour
 
     public event EventHandler<MoveTileEventArgs> MoveToTileDone;
 
+    private bool direction;
+    public bool Direction
+    {
+        get
+        {
+            return direction;
+        }
+        set
+        {
+            direction = value;
+            SetAdjacentTile();
+        }
+    }
+
+    private MoveTile adjacentTile;
+    private Coroutine moveToTileRoutine;
+
     private void Start()
     {
+        moveToTileRoutine = null;
+        Direction = true;
         MovePlayer();
     }
 
@@ -30,37 +49,52 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayer()
     {
-        StartCoroutine(MoveToTile());
+        if(moveToTileRoutine == null)
+        {
+            moveToTileRoutine = StartCoroutine(MoveToTile());
+        }
+        else
+        {
+            Debug.Log("wassup");
+        }
     }
 
     private IEnumerator MoveToTile()
     {
-        if(CurrentTile.CurrentAdjacentTile != null)
+        if(adjacentTile != null)
         {
             var distance = 0f;
             do
             {
-                var direction = CurrentTile.CurrentAdjacentTile.transform.position - CurrentTile.transform.position;
-                distance = (CurrentTile.CurrentAdjacentTile.transform.position - transform.position).sqrMagnitude;
+                var direction = adjacentTile.transform.position - CurrentTile.transform.position;
+                distance = (adjacentTile.transform.position - transform.position).sqrMagnitude;
                 transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
                 yield return null;
             } while(distance > 0.001);
 
-            CurrentTile = CurrentTile.CurrentAdjacentTile;
-
-            var handler = MoveToTileDone;
-            if(handler != null)
-            {
-                handler(this, new MoveTileEventArgs(CurrentTile != null));
-            }
+            CurrentTile = adjacentTile;
+            SetAdjacentTile();
         }
+
+        var handler = MoveToTileDone;
+        if(handler != null)
+        {
+            handler(this, new MoveTileEventArgs(adjacentTile != null));
+        }
+    }
+
+    private void SetAdjacentTile()
+    {
+        adjacentTile = direction ? CurrentTile.NextTile : CurrentTile.PreviousTile;
     }
 
     private void PlayerMovementMoveToTileDone(object sender, MoveTileEventArgs e)
     {
+        moveToTileRoutine = null;
+
         if(e.HasAdjacent)
         {
-            StartCoroutine(MoveToTile());
+            MovePlayer();
         }
     }
 }

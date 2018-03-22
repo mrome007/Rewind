@@ -209,8 +209,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 2138153473}
-  PreviousTile: {fileID: 450374618}
+  nextTile: {fileID: 2138153473}
+  previousTile: {fileID: 450374618}
 --- !u!1 &49992492
 GameObject:
   m_ObjectHideFlags: 0
@@ -307,8 +307,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 149052724}
-  PreviousTile: {fileID: 2138153473}
+  nextTile: {fileID: 149052724}
+  previousTile: {fileID: 2138153473}
 --- !u!1 &149052719
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,8 +405,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 0}
-  PreviousTile: {fileID: 49992497}
+  nextTile: {fileID: 0}
+  previousTile: {fileID: 49992497}
 --- !u!1 &351928278
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,8 +503,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 450374618}
-  PreviousTile: {fileID: 512744135}
+  nextTile: {fileID: 450374618}
+  previousTile: {fileID: 512744135}
 --- !u!1 &450374613
 GameObject:
   m_ObjectHideFlags: 0
@@ -601,8 +601,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 4785627}
-  PreviousTile: {fileID: 351928283}
+  nextTile: {fileID: 4785627}
+  previousTile: {fileID: 351928283}
 --- !u!1 &512744130
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,8 +699,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 351928283}
-  PreviousTile: {fileID: 798036038}
+  nextTile: {fileID: 351928283}
+  previousTile: {fileID: 798036038}
 --- !u!1 &664435274
 GameObject:
   m_ObjectHideFlags: 0
@@ -752,18 +752,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02b9774aef1e64d0daef8c7a3e827c31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tiles:
-  - {fileID: 1324345366}
-  - {fileID: 1013173878}
-  - {fileID: 1951144867}
-  - {fileID: 798036038}
-  - {fileID: 512744135}
-  - {fileID: 351928283}
-  - {fileID: 450374618}
-  - {fileID: 4785627}
-  - {fileID: 2138153473}
-  - {fileID: 49992497}
-  - {fileID: 149052724}
   playerMovement: {fileID: 1307392905}
 --- !u!1 &798036033
 GameObject:
@@ -861,8 +849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 512744135}
-  PreviousTile: {fileID: 1951144867}
+  nextTile: {fileID: 512744135}
+  previousTile: {fileID: 1951144867}
 --- !u!1 &1013173873
 GameObject:
   m_ObjectHideFlags: 0
@@ -959,8 +947,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 1951144867}
-  PreviousTile: {fileID: 1324345366}
+  nextTile: {fileID: 1951144867}
+  previousTile: {fileID: 1324345366}
 --- !u!1 &1085295719
 GameObject:
   m_ObjectHideFlags: 0
@@ -1165,8 +1153,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 1013173878}
-  PreviousTile: {fileID: 0}
+  nextTile: {fileID: 1013173878}
+  previousTile: {fileID: 0}
 --- !u!1 &1414242024
 GameObject:
   m_ObjectHideFlags: 0
@@ -1428,8 +1416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 798036038}
-  PreviousTile: {fileID: 1013173878}
+  nextTile: {fileID: 798036038}
+  previousTile: {fileID: 1013173878}
 --- !u!1 &2138153468
 GameObject:
   m_ObjectHideFlags: 0
@@ -1526,5 +1514,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NextTile: {fileID: 49992497}
-  PreviousTile: {fileID: 4785627}
+  nextTile: {fileID: 49992497}
+  previousTile: {fileID: 4785627}

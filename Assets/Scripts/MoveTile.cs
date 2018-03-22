@@ -4,22 +4,12 @@ using UnityEngine;
 
 public class MoveTile : MonoBehaviour 
 {
-    public MoveTile CurrentAdjacentTile { get; private set; }
+    [SerializeField]
+    private MoveTile nextTile;
 
-    public MoveTile NextTile;
-    public MoveTile PreviousTile;
+    [SerializeField]
+    private MoveTile previousTile;
 
-    private bool direction;
-
-    private void Awake()
-    {
-        direction = false;
-        ToggleDirection();
-    }
-
-    public void ToggleDirection()
-    {
-        direction = !direction;
-        CurrentAdjacentTile = direction ? NextTile : PreviousTile;
-    }
+    public MoveTile NextTile { get { return nextTile; } }
+    public MoveTile PreviousTile { get { return previousTile; } }
 }

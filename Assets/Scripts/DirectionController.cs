@@ -5,25 +5,14 @@ using UnityEngine;
 public class DirectionController : MonoBehaviour 
 {
     [SerializeField]
-    private List<MoveTile> tiles;
-
-    [SerializeField]
     private PlayerMovement playerMovement;
 
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            ToggleTileDirection();
+            playerMovement.Direction = !playerMovement.Direction;
             playerMovement.MovePlayer();
-        }
-    }
-
-    private void ToggleTileDirection()
-    {
-        foreach(var tile in tiles)
-        {
-            tile.ToggleDirection();
         }
     }
 }
