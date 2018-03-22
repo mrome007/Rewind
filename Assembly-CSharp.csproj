@@ -51,11 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\Command.cs" />
-     <Compile Include="Assets\Scripts\MoveCommand.cs" />
-     <Compile Include="Assets\Scripts\Player.cs" />
-     <Compile Include="Assets\Scripts\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\RewindController.cs" />
+     <Compile Include="Assets\Scripts\DirectionController.cs" />
+     <Compile Include="Assets\Scripts\MoveTile.cs" />
+     <Compile Include="Assets\Scripts\MoveTileEventArgs.cs" />
+     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\TrialCommandPattern\Command.cs" />
+     <Compile Include="Assets\Scripts\TrialCommandPattern\MoveCommand.cs" />
+     <Compile Include="Assets\Scripts\TrialCommandPattern\Player.cs" />
+     <Compile Include="Assets\Scripts\TrialCommandPattern\PlayerController.cs" />
+     <Compile Include="Assets\Scripts\TrialCommandPattern\RewindController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
