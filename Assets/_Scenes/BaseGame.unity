@@ -1392,6 +1392,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307392906}
   - component: {fileID: 1307392905}
+  - component: {fileID: 1307392907}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1412,6 +1413,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTile: {fileID: 351928283}
   moveSpeed: 4.5
+  rewindController: {fileID: 1307392907}
 --- !u!4 &1307392906
 Transform:
   m_ObjectHideFlags: 0
@@ -1426,6 +1428,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1307392907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1307392904}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85d72d5121fc240e288145a46cfccb6f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1324345361
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,4 +7,5 @@ public interface ICommand
 {
     event EventHandler ExecuteDone;
     void Execute();
+    void Undo();
 }

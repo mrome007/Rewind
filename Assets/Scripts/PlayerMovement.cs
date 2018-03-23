@@ -11,13 +11,16 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float moveSpeed;
 
+    [SerializeField]
+    private RewindController rewindController;
+
     public event EventHandler<MoveTileEventArgs> MoveToTileDone;
 
     private MoveTile adjacentTile;
     private MoveTile previousTile;
     private Coroutine moveToTileRoutine;
 
-    private bool direction;
+    private bool direction = true;
     public bool Direction
     {
         get
@@ -27,12 +30,10 @@ public class PlayerMovement : MonoBehaviour
         set
         {
             direction = value;
-            if(moveToTileRoutine != null)
-            {
-                StopCoroutine(moveToTileRoutine);
-                moveToTileRoutine = null;
-            }
-            MovePlayer(currentTile, previousTile, previousTile);
+
+            var command = new MoveCommand(currentTile, previousTile, previousTile, this);
+            rewindController.AddCommands(command);
+            command.Execute();
         }
     }
 
@@ -42,8 +43,10 @@ public class PlayerMovement : MonoBehaviour
     {
         moveToTileRoutine = null;
         previousTile = currentTile;
-        Direction = true;
-        MovePlayer(currentTile, previousTile, GetAdjacentTile(currentTile));
+
+        var command = new MoveCommand(currentTile, previousTile, GetAdjacentTile(currentTile), this);
+        rewindController.AddCommands(command);
+        command.Execute();
     }
 
     private void Awake()
@@ -58,10 +61,13 @@ public class PlayerMovement : MonoBehaviour
 
     public void MovePlayer(MoveTile currTile, MoveTile prevTile, MoveTile currAdjTile, bool loop = true)
     {
-        if(moveToTileRoutine == null)
+        if(moveToTileRoutine != null)
         {
-            moveToTileRoutine = StartCoroutine(MoveToTile(currTile, prevTile, currAdjTile, loop));
+            StopCoroutine(moveToTileRoutine);
+            moveToTileRoutine = null;
         }
+
+        moveToTileRoutine = StartCoroutine(MoveToTile(currTile, prevTile, currAdjTile, loop));
     }
 
     private IEnumerator MoveToTile(MoveTile currTile, MoveTile prevTile, MoveTile currAdjTile, bool loop)
@@ -70,8 +76,7 @@ public class PlayerMovement : MonoBehaviour
         {
             var distance = 0f;
             prevTile = currTile;
-            var adjTile = GetAdjacentTile(currTile);
-            currTile = adjTile;
+            currTile = currAdjTile;
 
             //set private members.
             previousTile = prevTile;
@@ -83,7 +88,7 @@ public class PlayerMovement : MonoBehaviour
                 distance = (currTile.transform.position - transform.position).sqrMagnitude;
                 transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
                 yield return null;
-            } while(distance > 0.01);
+            } while(distance > 0.015);
         }
             
         var handler = MoveToTileDone;
@@ -93,7 +98,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private MoveTile GetAdjacentTile(MoveTile currTile)
+    public MoveTile GetAdjacentTile(MoveTile currTile)
     {
         var adjTile = direction ? currTile.NextTile : currTile.PreviousTile;
         return adjTile;
@@ -111,7 +116,9 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                MovePlayer(currentTile, previousTile, GetAdjacentTile(currentTile));
+                var command = new MoveCommand(currentTile, previousTile, GetAdjacentTile(currentTile), this);
+                rewindController.AddCommands(command);
+                command.Execute();
             }
         }
     }
