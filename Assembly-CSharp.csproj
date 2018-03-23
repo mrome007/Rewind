@@ -55,11 +55,6 @@
      <Compile Include="Assets\Scripts\MoveTile.cs" />
      <Compile Include="Assets\Scripts\MoveTileEventArgs.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
-     <Compile Include="Assets\Scripts\TrialCommandPattern\Command.cs" />
-     <Compile Include="Assets\Scripts\TrialCommandPattern\MoveCommand.cs" />
-     <Compile Include="Assets\Scripts\TrialCommandPattern\Player.cs" />
-     <Compile Include="Assets\Scripts\TrialCommandPattern\PlayerController.cs" />
-     <Compile Include="Assets\Scripts\TrialCommandPattern\RewindController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
