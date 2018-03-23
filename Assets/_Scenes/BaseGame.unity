@@ -1410,7 +1410,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2127dd125e60e41749e4f6124a83a312, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentTile: {fileID: 351928283}
+  currentTile: {fileID: 351928283}
   moveSpeed: 4.5
 --- !u!4 &1307392906
 Transform:
