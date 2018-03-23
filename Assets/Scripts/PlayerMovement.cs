@@ -27,8 +27,9 @@ public class PlayerMovement : MonoBehaviour
         set
         {
             direction = value;
+            var prevTile = CurrentTile;
             CurrentTile = previousTile;
-            previousTile = adjacentTile;
+            previousTile = prevTile;
             SetAdjacentTile();
         }
     }
@@ -75,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
                 distance = (CurrentTile.transform.position - transform.position).sqrMagnitude;
                 transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
                 yield return null;
-            } while(distance > 0.001);
+            } while(distance > 0.01);
         }
 
         var handler = MoveToTileDone;

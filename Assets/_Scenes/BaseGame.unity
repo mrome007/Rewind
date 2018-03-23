@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CurrentTile: {fileID: 351928283}
-  moveSpeed: 2
+  moveSpeed: 4.5
 --- !u!4 &1307392906
 Transform:
   m_ObjectHideFlags: 0
