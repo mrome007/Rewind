@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
     private float moveSpeed;
 
     [SerializeField]
-    private RewindController rewindController;
+    private RewindPlayer rewindController;
 
     public event EventHandler<MoveTileEventArgs> MoveToTileDone;
 
@@ -37,16 +37,10 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-   
-
     private void Start()
     {
         moveToTileRoutine = null;
         previousTile = currentTile;
-
-        var command = new MoveCommand(currentTile, previousTile, GetAdjacentTile(currentTile), this);
-        rewindController.AddCommands(command);
-        command.Execute();
     }
 
     private void Awake()
@@ -102,6 +96,13 @@ public class PlayerMovement : MonoBehaviour
     {
         var adjTile = direction ? currTile.NextTile : currTile.PreviousTile;
         return adjTile;
+    }
+
+    public void StartMove()
+    {
+        var command = new MoveCommand(currentTile, previousTile, GetAdjacentTile(currentTile), this);
+        rewindController.AddCommands(command);
+        command.Execute();
     }
 
     private void PlayerMovementMoveToTileDone(object sender, MoveTileEventArgs e)

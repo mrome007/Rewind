@@ -4,45 +4,45 @@ using UnityEngine;
 
 public class RewindController : MonoBehaviour 
 {
-    private Stack<ICommand> commands;
-    private ICommand currentCommand;
+    [SerializeField]
+    private List<RewindPlayer> rewindPlayers;
+
+    private int rewindCount;
 
     private void Awake()
     {
-        commands = new Stack<ICommand>();
-        currentCommand = null;
+        rewindCount = 0;
     }
 
-    private void Update()
+    public void RewindButtonPressed(bool change)
     {
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(rewindCount < rewindPlayers.Count)
         {
-            Rewind();
+            RewindAllPlayers();
         }
     }
 
-    public void AddCommands(ICommand command)
+    private void RewindAllPlayers()
     {
-        commands.Push(command);
-    }
-
-    private void Rewind()
-    {
-        if(commands.Count > 0)
+        rewindCount = 0;
+        foreach(var player in rewindPlayers)
         {
-            currentCommand = commands.Pop();
-            currentCommand.ExecuteDone += CommandExecuteDone;
-            currentCommand.Undo();
+            player.RewindDone += PlayerRewindDone;
+            player.Rewind();
         }
     }
 
-    private void CommandExecuteDone(object sender, System.EventArgs e)
+    private void PlayerRewindDone(object sender, System.EventArgs e)
     {
-        currentCommand.ExecuteDone -= CommandExecuteDone;
+        rewindCount++;
 
-        if(commands.Count > 0)
+        if(rewindCount == rewindPlayers.Count)
         {
-            Rewind();
+            //rewind is done for all players.
+            foreach(var player in rewindPlayers)
+            {
+                player.RewindDone -= PlayerRewindDone;
+            }
         }
     }
 }
