@@ -15,6 +15,9 @@ public class ButtonsController : MonoBehaviour
     private Toggle playToggle;
 
     [SerializeField]
+    private Toggle stopToggle;
+
+    [SerializeField]
     private List<GameObject> players;
 
     private int rewindCount;
@@ -37,6 +40,14 @@ public class ButtonsController : MonoBehaviour
         if(playToggle.isOn)
         {
             StartMovePlayers();
+        }
+    }
+
+    public void StopButtonPressed()
+    {
+        if(stopToggle.isOn)
+        {
+            StopAllPlayers();
         }
     }
 
@@ -63,6 +74,18 @@ public class ButtonsController : MonoBehaviour
             {
                 rewindPlayer.RewindDone += PlayerRewindDone;
                 rewindPlayer.Rewind();
+            }
+        }
+    }
+
+    private void StopAllPlayers()
+    {
+        foreach(var player in players)
+        {
+            var playerMovement = player.GetComponent<PlayerMovement>();
+            if(playerMovement != null)
+            {
+                playerMovement.StopMove();
             }
         }
     }

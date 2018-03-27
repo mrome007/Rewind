@@ -100,7 +100,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void StartMove()
     {
-        Direction = true;
+        direction = true;
+
+        var command = new MoveCommand(currentTile, previousTile, GetAdjacentTile(currentTile), this);
+        rewindController.AddCommands(command);
+        command.Execute();
     }
 
     public void StopMove()
