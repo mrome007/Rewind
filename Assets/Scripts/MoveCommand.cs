@@ -32,7 +32,12 @@ public class MoveCommand : ICommand
         playerMovement.MovePlayer(adjacentTile, previousTile, currentTile, false);
     }
 
-    private void PlayerMovementMoveToTileDone (object sender, MoveTileEventArgs e)
+    public void Stop()
+    {
+        playerMovement.MoveToTileDone -= PlayerMovementMoveToTileDone;
+    }
+
+    private void PlayerMovementMoveToTileDone(object sender, MoveTileEventArgs e)
     {
         playerMovement.MoveToTileDone -= PlayerMovementMoveToTileDone;
 

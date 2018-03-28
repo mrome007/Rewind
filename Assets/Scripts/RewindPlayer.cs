@@ -29,9 +29,17 @@ public class RewindPlayer : MonoBehaviour
     {
         if(commands.Count > 0)
         {
-            currentCommand = commands.Pop();
+            currentCommand = commands.Peek();
             currentCommand.ExecuteDone += CommandExecuteDone;
             currentCommand.Undo();
+        }
+    }
+
+    public void StopRewind()
+    {
+        if(currentCommand != null)
+        {
+            currentCommand.ExecuteDone -= CommandExecuteDone;
         }
     }
 
@@ -41,6 +49,7 @@ public class RewindPlayer : MonoBehaviour
 
         if(commands.Count > 0)
         {
+            commands.Pop();
             Rewind();
         }
         else

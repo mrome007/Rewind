@@ -33,6 +33,10 @@ public class ButtonsController : MonoBehaviour
         {
             RewindAllPlayers();
         }
+        else
+        {
+            StopAllPlayers();
+        }
     }
 
     public void PlayButtonPressed()
@@ -41,6 +45,10 @@ public class ButtonsController : MonoBehaviour
         {
             StartMovePlayers();
         }
+        else
+        {
+            StopAllPlayers();
+        }
     }
 
     public void StopButtonPressed()
@@ -48,6 +56,10 @@ public class ButtonsController : MonoBehaviour
         if(stopToggle.isOn)
         {
             StopAllPlayers();
+        }
+        else
+        {
+            playToggle.isOn = true;
         }
     }
 
@@ -86,6 +98,12 @@ public class ButtonsController : MonoBehaviour
             if(playerMovement != null)
             {
                 playerMovement.StopMove();
+            }
+
+            var rewindPlayer = player.GetComponent<RewindPlayer>();
+            if(rewindPlayer != null)
+            {
+                rewindPlayer.StopRewind();
             }
         }
     }

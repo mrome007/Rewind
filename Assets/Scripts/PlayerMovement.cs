@@ -128,6 +128,12 @@ public class PlayerMovement : MonoBehaviour
         {
             StopCoroutine(moveToTileRoutine);
             moveToTileRoutine = null;
+
+            var latestCommand = rewindController.GetLatestCommand();
+            if(latestCommand != null)
+            {
+                latestCommand.Stop();
+            }
         }
     }
 
