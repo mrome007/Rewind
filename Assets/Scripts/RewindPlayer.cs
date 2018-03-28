@@ -20,6 +20,11 @@ public class RewindPlayer : MonoBehaviour
         commands.Push(command);
     }
 
+    public ICommand GetLatestCommand()
+    {
+        return commands.Count > 0 ? commands.Peek() : null;
+    }
+
     public void Rewind()
     {
         if(commands.Count > 0)
