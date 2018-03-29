@@ -68,6 +68,10 @@ public class PlayerMovement : MonoBehaviour
     {
         if(currAdjTile != null)
         {
+            if(currTile.Direction != MoveTile.TileDirection.Normal)
+            {
+                direction = currTile.Direction == MoveTile.TileDirection.Right || currTile.Direction == MoveTile.TileDirection.Up;
+            }
             var distance = 0f;
             prevTile = currTile;
             currTile = currAdjTile;
@@ -95,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
     public MoveTile GetAdjacentTile(MoveTile currTile)
     {
         var adjTile = direction ? currTile.NextTile : currTile.PreviousTile;
-        if(currTile.CurrentTile != MoveTile.TileDirection.Normal)
+        if(currTile.Direction != MoveTile.TileDirection.Normal)
         {
             adjTile = currTile.NextTile;
         }

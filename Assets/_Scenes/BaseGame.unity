@@ -1051,11 +1051,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTile: {fileID: 0}
+  nextTile: {fileID: 1701107444}
   previousTile: {fileID: 1502818415}
   Up: {fileID: 0}
   Down: {fileID: 1502818415}
-  Left: {fileID: 0}
+  Left: {fileID: 1701107444}
   Right: {fileID: 0}
   tileDirection: 0
 --- !u!23 &804422888
@@ -2294,12 +2294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e285c30c4cbaf4ebf9cc20f587b0d90c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextTile: {fileID: 0}
-  previousTile: {fileID: 585400854}
+  nextTile: {fileID: 585400854}
+  previousTile: {fileID: 804422887}
   Up: {fileID: 0}
   Down: {fileID: 585400854}
   Left: {fileID: 0}
-  Right: {fileID: 0}
+  Right: {fileID: 804422887}
   tileDirection: 0
 --- !u!23 &1701107445
 MeshRenderer:

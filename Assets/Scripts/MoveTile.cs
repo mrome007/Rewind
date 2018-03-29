@@ -36,7 +36,7 @@ public class MoveTile : MonoBehaviour
 
     public MoveTile NextTile { get { return nextTile; } }
     public MoveTile PreviousTile { get { return previousTile; } }
-    public TileDirection CurrentTile { get{ return tileDirection; } }
+    public TileDirection Direction { get{ return tileDirection; } }
 
     private int currentTileIndex;
 
