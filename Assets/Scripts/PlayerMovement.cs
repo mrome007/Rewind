@@ -95,6 +95,10 @@ public class PlayerMovement : MonoBehaviour
     public MoveTile GetAdjacentTile(MoveTile currTile)
     {
         var adjTile = direction ? currTile.NextTile : currTile.PreviousTile;
+        if(currTile.CurrentTile != MoveTile.TileDirection.Normal)
+        {
+            adjTile = currTile.NextTile;
+        }
         return adjTile;
     }
 
