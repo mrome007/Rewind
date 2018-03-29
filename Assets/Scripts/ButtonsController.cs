@@ -20,11 +20,31 @@ public class ButtonsController : MonoBehaviour
     [SerializeField]
     private List<GameObject> players;
 
+    [SerializeField]
+    private LayerMask tileLayerMask;
+
     private int rewindCount;
 
     private void Awake()
     {
         rewindCount = 0;
+    }
+
+    private void Update()
+    {
+        if(Input.GetMouseButtonDown(0))
+        {
+            var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+            if(Physics.Raycast(ray, out hit, 20f, tileLayerMask))
+            {
+                var moveTile = hit.collider.GetComponent<MoveTile>();
+                if(moveTile != null)
+                {
+                    moveTile.CycleNextTile();
+                }
+            }
+        }
     }
 
     public void RewindButtonPressed()

@@ -24,14 +24,44 @@ public class MoveTile : MonoBehaviour
 
     public enum TileDirection
     {
+        Normal,
+        Right,
         Up,
-        Down,
         Left,
-        Right
+        Down
     }
+
+    [SerializeField]
+    private TileDirection tileDirection;
 
     public MoveTile NextTile { get { return nextTile; } }
     public MoveTile PreviousTile { get { return previousTile; } }
+
+    private int currentTileIndex;
+
+    private void Start()
+    {
+        currentTileIndex = 0;
+        if(tileDirection != TileDirection.Normal)
+        {
+            currentTileIndex = (int)tileDirection;
+            ChangeNextTile(tileDirection);
+        }
+    }
+
+    public void CycleNextTile()
+    {
+        currentTileIndex++;
+        currentTileIndex %= 5;
+
+        if(currentTileIndex == 0)
+        {
+            currentTileIndex++;
+        }
+
+        tileDirection = (TileDirection)currentTileIndex;
+        ChangeNextTile(tileDirection);
+    }
 
     public void ChangeNextTile(TileDirection direction)
     {
@@ -56,6 +86,36 @@ public class MoveTile : MonoBehaviour
             default:
                 break;
         }
+
+        RotateTile(direction);
+    }
+
+    private void RotateTile(TileDirection direction)
+    {
+        var rotationVector = Vector3.zero;
+
+        switch(direction)
+        {
+            case TileDirection.Up:
+                rotationVector.y = 270f;
+                break;
+
+            case TileDirection.Down:
+                rotationVector.y = 90f;
+                break;
+
+            case TileDirection.Left:
+                rotationVector.y = 180f;
+                break;
+
+            case TileDirection.Right:
+                rotationVector.y = 0f;
+                break;
+            default:
+                break;
+        }
+
+        transform.localRotation = Quaternion.Euler(rotationVector);
     }
 }
 
