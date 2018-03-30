@@ -363,7 +363,8 @@ MonoBehaviour:
   Down: {fileID: 0}
   Left: {fileID: 0}
   Right: {fileID: 0}
-  tileDirection: 0
+  tileDirection: 1
+  tileMode: 0
 --- !u!1 &394734018
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +529,8 @@ MonoBehaviour:
   Down: {fileID: 0}
   Left: {fileID: 636468214}
   Right: {fileID: 1533068295}
-  tileDirection: 1
+  tileDirection: 0
+  tileMode: 1
 --- !u!23 &585400855
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -686,6 +688,7 @@ MonoBehaviour:
   Left: {fileID: 1346439287}
   Right: {fileID: 585400854}
   tileDirection: 0
+  tileMode: 0
 --- !u!23 &636468215
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1057,7 +1060,8 @@ MonoBehaviour:
   Down: {fileID: 1502818415}
   Left: {fileID: 1701107444}
   Right: {fileID: 0}
-  tileDirection: 0
+  tileDirection: 2
+  tileMode: 0
 --- !u!23 &804422888
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1454,6 +1458,7 @@ MonoBehaviour:
   Left: {fileID: 0}
   Right: {fileID: 1346439287}
   tileDirection: 0
+  tileMode: 0
 --- !u!23 &1036505205
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1734,7 +1739,8 @@ MonoBehaviour:
   Down: {fileID: 351928283}
   Left: {fileID: 1036505204}
   Right: {fileID: 636468214}
-  tileDirection: 1
+  tileDirection: 0
+  tileMode: 1
 --- !u!23 &1346439288
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1931,7 +1937,8 @@ MonoBehaviour:
   Down: {fileID: 0}
   Left: {fileID: 1533068295}
   Right: {fileID: 0}
-  tileDirection: 0
+  tileDirection: 1
+  tileMode: 0
 --- !u!23 &1502818416
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2009,6 +2016,7 @@ MonoBehaviour:
   Left: {fileID: 585400854}
   Right: {fileID: 1502818415}
   tileDirection: 0
+  tileMode: 0
 --- !u!23 &1533068296
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2300,7 +2308,8 @@ MonoBehaviour:
   Down: {fileID: 585400854}
   Left: {fileID: 0}
   Right: {fileID: 804422887}
-  tileDirection: 0
+  tileDirection: 3
+  tileMode: 0
 --- !u!23 &1701107445
 MeshRenderer:
   m_ObjectHideFlags: 0

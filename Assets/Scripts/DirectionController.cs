@@ -12,7 +12,6 @@ public class DirectionController : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space))
         {
-            playerMovement.Direction = !playerMovement.Direction;
         }
     }
 }

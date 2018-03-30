@@ -77,10 +77,6 @@ public class ButtonsController : MonoBehaviour
         {
             StopAllPlayers();
         }
-        else
-        {
-            playToggle.isOn = true;
-        }
     }
 
     public void StartMovePlayers()

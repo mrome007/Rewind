@@ -20,23 +20,6 @@ public class PlayerMovement : MonoBehaviour
     private MoveTile previousTile;
     private Coroutine moveToTileRoutine;
 
-    private bool direction = true;
-    public bool Direction
-    {
-        get
-        {
-            return direction;
-        }
-        set
-        {
-            direction = value;
-
-            var command = new MoveCommand(currentTile, previousTile, previousTile, this);
-            rewindController.AddCommands(command);
-            command.Execute();
-        }
-    }
-
     private void Start()
     {
         moveToTileRoutine = null;
@@ -68,10 +51,6 @@ public class PlayerMovement : MonoBehaviour
     {
         if(currAdjTile != null)
         {
-            if(currTile.Direction != MoveTile.TileDirection.Normal)
-            {
-                direction = currTile.Direction == MoveTile.TileDirection.Right || currTile.Direction == MoveTile.TileDirection.Up;
-            }
             var distance = 0f;
             prevTile = currTile;
             currTile = currAdjTile;
@@ -98,24 +77,18 @@ public class PlayerMovement : MonoBehaviour
 
     public MoveTile GetAdjacentTile(MoveTile currTile)
     {
-        var adjTile = direction ? currTile.NextTile : currTile.PreviousTile;
-        if(currTile.Direction != MoveTile.TileDirection.Normal)
+        var adjTile = currTile.GetAdjacentTile(previousTile);
+
+        if(currTile.Mode == MoveTile.TileMode.Changed)
         {
             adjTile = currTile.NextTile;
         }
+
         return adjTile;
     }
 
     public void StartMove()
     {
-        if(!direction)
-        {
-            direction = true;
-            var prev = previousTile;
-            previousTile = currentTile;
-            currentTile = prev;
-        }
-
         var latestCommand = rewindController.GetLatestCommand();
 
         if(latestCommand != null)
@@ -153,7 +126,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if(!e.HasAdjacent)
             {
-                Direction = !Direction;
             }
             else
             {
