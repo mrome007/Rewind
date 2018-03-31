@@ -33,7 +33,8 @@ public class MoveTile : MonoBehaviour
     public enum TileMode
     {
         Forced,
-        Changed
+        Changed,
+        Win
     }
 
     [SerializeField]
