@@ -67,6 +67,7 @@ public class MoveTile : MonoBehaviour
 
     public void ChangeNextTile(TileDirection direction)
     {
+        tileDirection = direction;
         switch(direction)
         {
             case TileDirection.Up:
@@ -120,27 +121,30 @@ public class MoveTile : MonoBehaviour
         transform.localRotation = Quaternion.Euler(rotationVector);
     }
 
-    public MoveTile GetAdjacentTile(MoveTile previous)
+    public void ModifyAdjacentTile(MoveTile previous)
     {
-        MoveTile adjTile = null;
         previousTile = previous;
         //Return the same direction as currentTile.
         switch(previous.Direction)
         {
             case TileDirection.Up:
-                adjTile = Up;
+                nextTile = Up;
+                tileDirection = TileDirection.Up;
                 break;
 
             case TileDirection.Down:
-                adjTile = Down;
+                nextTile = Down;
+                tileDirection = TileDirection.Down;
                 break;
 
             case TileDirection.Left:
-                adjTile = Left;
+                nextTile = Left;
+                tileDirection = TileDirection.Left;
                 break;
 
             case TileDirection.Right:
-                adjTile = Right;
+                nextTile = Right;
+                tileDirection = TileDirection.Right;
                 break;
 
             default:
@@ -148,90 +152,106 @@ public class MoveTile : MonoBehaviour
         }
 
         //No tiles on the same direction.
-        if(adjTile == null)
+        if(nextTile == null)
         {
             switch(previous.Direction)
             {
                 case TileDirection.Up:
                     {
-                        adjTile = Up;
-
-                        if(adjTile == null)
+                        nextTile = Up;
+                        tileDirection = TileDirection.Up;
+                            
+                        if(nextTile == null)
                         {
-                            adjTile = Right;
+                            nextTile = Right;
+                            tileDirection = TileDirection.Right;
                         }
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Left;
+                            nextTile = Left;
+                            tileDirection = TileDirection.Left;
                         }
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Down;
+                            nextTile = Down;
+                            tileDirection = TileDirection.Down;
                         }
                     }
                     break;
 
                 case TileDirection.Down:
                     {
-                        adjTile = Down;
+                        nextTile = Down;
+                        tileDirection = TileDirection.Down;
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Left;
+                            nextTile = Left;
+                            tileDirection = TileDirection.Left;
                         }
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Right;
+                            nextTile = Right;
+                            tileDirection = TileDirection.Right;
                         }
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Up;
+                            nextTile = Up;
+                            tileDirection = TileDirection.Up;
                         }
                     }
                     break;
 
                 case TileDirection.Left:
                     {
-                        adjTile = Left;
+                        nextTile = Left;
+                        tileDirection = TileDirection.Left;
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Down;
+                            nextTile = Down;
+                            tileDirection = TileDirection.Down;
                         }
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Up;
+                            nextTile = Up;
+                            tileDirection = TileDirection.Up;
                         }
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Right;
+                            nextTile = Right;
+                            tileDirection = TileDirection.Right;
                         }
                     }
                     break;
 
                 case TileDirection.Right:
                     {
-                        adjTile = Right;
+                        nextTile = Right;
+                        tileDirection = TileDirection.Right;
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Up;
+                            nextTile = Up;
+                            tileDirection = TileDirection.Up;
                         }
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Down;
+                            nextTile = Down;
+                            tileDirection = TileDirection.Down;
                         }
 
-                        if(adjTile == null)
+                        if(nextTile == null)
                         {
-                            adjTile = Left;
+                            nextTile = Left;
+                            tileDirection = TileDirection.Left;
                         }
                     }
                     break;
@@ -240,8 +260,6 @@ public class MoveTile : MonoBehaviour
                     break;
             }
         }
-
-        return adjTile;
     }
 }
 

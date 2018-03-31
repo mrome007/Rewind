@@ -77,12 +77,12 @@ public class PlayerMovement : MonoBehaviour
 
     public MoveTile GetAdjacentTile(MoveTile currTile)
     {
-        var adjTile = currTile.GetAdjacentTile(previousTile);
-
-        if(currTile.Mode == MoveTile.TileMode.Changed)
+        if(currTile.Mode == MoveTile.TileMode.Forced)
         {
-            adjTile = currTile.NextTile;
+            currTile.ModifyAdjacentTile(previousTile);
         }
+
+        var adjTile = currTile.NextTile;
 
         return adjTile;
     }
@@ -97,7 +97,8 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            var command = new MoveCommand(currentTile, previousTile, GetAdjacentTile(currentTile), this);
+            var adjacentTile = GetAdjacentTile(currentTile);
+            var command = new MoveCommand(currentTile, currentTile.PreviousTile, adjacentTile, this);
             rewindController.AddCommands(command);
             command.Execute();
         }
@@ -129,7 +130,8 @@ public class PlayerMovement : MonoBehaviour
             }
             else
             {
-                var command = new MoveCommand(currentTile, previousTile, GetAdjacentTile(currentTile), this);
+                var adjacentTile = GetAdjacentTile(currentTile);
+                var command = new MoveCommand(currentTile, currentTile.PreviousTile, adjacentTile, this);
                 rewindController.AddCommands(command);
                 command.Execute();
             }
