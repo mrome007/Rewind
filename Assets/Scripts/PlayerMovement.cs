@@ -71,7 +71,7 @@ public class PlayerMovement : MonoBehaviour
         var handler = MoveToTileDone;
         if(handler != null)
         {
-            handler(this, new MoveTileEventArgs(GetAdjacentTile(currTile) != null, loop));
+            handler(this, new MoveTileEventArgs(loop));
         }
     }
 
@@ -125,12 +125,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(e.Loop)
         {
-            if(!e.HasAdjacent)
+            var adjacentTile = GetAdjacentTile(currentTile);
+            if(adjacentTile != null)
             {
-            }
-            else
-            {
-                var adjacentTile = GetAdjacentTile(currentTile);
                 var command = new MoveCommand(currentTile, currentTile.PreviousTile, adjacentTile, this);
                 rewindController.AddCommands(command);
                 command.Execute();
