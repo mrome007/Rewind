@@ -27,7 +27,8 @@ public class MoveTile : MonoBehaviour
         Right,
         Up,
         Left,
-        Down
+        Down,
+        None
     }
 
     public enum TileMode
@@ -121,11 +122,13 @@ public class MoveTile : MonoBehaviour
         transform.localRotation = Quaternion.Euler(rotationVector);
     }
 
-    public void ModifyAdjacentTile(MoveTile previous)
+    public void ModifyAdjacentTile(MoveTile previous, TileDirection dir = TileDirection.None)
     {
         previousTile = previous;
         //Return the same direction as currentTile.
-        switch(previous.Direction)
+
+        var prevDirection = dir == TileDirection.None ? previous.Direction : dir;
+        switch(prevDirection)
         {
             case TileDirection.Up:
                 nextTile = Up;
@@ -154,7 +157,7 @@ public class MoveTile : MonoBehaviour
         //No tiles on the same direction.
         if(nextTile == null)
         {
-            switch(previous.Direction)
+            switch(prevDirection)
             {
                 case TileDirection.Up:
                     {

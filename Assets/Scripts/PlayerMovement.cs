@@ -19,11 +19,13 @@ public class PlayerMovement : MonoBehaviour
     private MoveTile adjacentTile;
     private MoveTile previousTile;
     private Coroutine moveToTileRoutine;
+    private MoveTile.TileDirection changedCachedDirection;
 
     private void Start()
     {
         moveToTileRoutine = null;
         previousTile = currentTile;
+        changedCachedDirection = MoveTile.TileDirection.None;
     }
 
     private void Awake()
@@ -75,14 +77,27 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public MoveTile GetAdjacentTile(MoveTile currTile)
+    private MoveTile GetAdjacentTile()
     {
-        if(currTile.Mode == MoveTile.TileMode.Forced)
+        if(currentTile.Mode == MoveTile.TileMode.Changed)
         {
-            currTile.ModifyAdjacentTile(previousTile);
+            changedCachedDirection = currentTile.Direction;
         }
 
-        var adjTile = currTile.NextTile;
+        if(currentTile.Mode == MoveTile.TileMode.Forced)
+        {
+            if(previousTile.Mode == MoveTile.TileMode.Changed)
+            {
+                currentTile.ModifyAdjacentTile(previousTile, changedCachedDirection);
+            }
+            else
+            {
+                currentTile.ModifyAdjacentTile(previousTile);
+            }
+            changedCachedDirection = MoveTile.TileDirection.None;
+        }
+
+        var adjTile = currentTile.NextTile;
 
         return adjTile;
     }
@@ -97,10 +112,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            var adjacentTile = GetAdjacentTile(currentTile);
-            var command = new MoveCommand(currentTile, currentTile.PreviousTile, adjacentTile, this);
-            rewindController.AddCommands(command);
-            command.Execute();
+            InitiateMove();
         }
     }
 
@@ -125,13 +137,18 @@ public class PlayerMovement : MonoBehaviour
 
         if(e.Loop)
         {
-            var adjacentTile = GetAdjacentTile(currentTile);
-            if(adjacentTile != null)
-            {
-                var command = new MoveCommand(currentTile, currentTile.PreviousTile, adjacentTile, this);
-                rewindController.AddCommands(command);
-                command.Execute();
-            }
+            InitiateMove();
+        }
+    }
+
+    private void InitiateMove()
+    {
+        var adjacentTile = GetAdjacentTile();
+        if(adjacentTile != null)
+        {
+            var command = new MoveCommand(currentTile, currentTile.PreviousTile, adjacentTile, this);
+            rewindController.AddCommands(command);
+            command.Execute();
         }
     }
 }
