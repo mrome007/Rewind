@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ButtonsController : MonoBehaviour 
+public class GameController : MonoBehaviour 
 {
     [SerializeField]
     private ToggleGroup buttonsToggleGroup;
@@ -24,10 +24,36 @@ public class ButtonsController : MonoBehaviour
     private LayerMask tileLayerMask;
 
     private int rewindCount;
+    private int winCount;
 
     private void Awake()
     {
         rewindCount = 0;
+        winCount = 0;
+    }
+
+    private void Start()
+    {
+        foreach(var player in players)
+        {
+            var playerMovement = player.GetComponent<PlayerMovement>();
+            if(playerMovement != null)
+            {
+                playerMovement.PlayerWin += PlayerMovementPlayerWin;
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        foreach(var player in players)
+        {
+            var playerMovement = player.GetComponent<PlayerMovement>();
+            if(playerMovement != null)
+            {
+                playerMovement.PlayerWin -= PlayerMovementPlayerWin;
+            }
+        }
     }
 
     private void Update()
@@ -142,6 +168,16 @@ public class ButtonsController : MonoBehaviour
             }
 
             buttonsToggleGroup.SetAllTogglesOff();
+        }
+    }
+
+    private void PlayerMovementPlayerWin(object sender, System.EventArgs e)
+    {
+        winCount++;
+
+        if(winCount == players.Count)
+        {
+            Debug.Log("WINNER");
         }
     }
 }

@@ -38,16 +38,27 @@ public class MoveTile : MonoBehaviour
         Win
     }
 
+    public enum TileColor
+    {
+        None,
+        Blue,
+        Red
+    }
+
     [SerializeField]
     private TileDirection tileDirection;
 
     [SerializeField]
     private TileMode tileMode;
 
+    [SerializeField]
+    private TileColor tileColor;
+
     public MoveTile NextTile { get { return nextTile; } }
     public MoveTile PreviousTile { get { return previousTile; } }
     public TileDirection Direction { get{ return tileDirection; } }
     public TileMode Mode { get { return tileMode; } }
+    public TileColor Color { get { return tileColor; } }
 
     private int currentTileIndex;
 
@@ -263,6 +274,11 @@ public class MoveTile : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public bool IsWin()
+    {
+        return tileMode == TileMode.Win;
     }
 }
 

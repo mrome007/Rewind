@@ -14,7 +14,11 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private RewindPlayer rewindController;
 
+    [SerializeField]
+    private MoveTile.TileColor playerColor;
+
     public event EventHandler<MoveTileEventArgs> MoveToTileDone;
+    public event EventHandler PlayerWin;
 
     private MoveTile adjacentTile;
     private MoveTile previousTile;
@@ -137,6 +141,18 @@ public class PlayerMovement : MonoBehaviour
 
         if(e.Loop)
         {
+            if(currentTile.IsWin())
+            {
+                if(playerColor == currentTile.Color)
+                {
+                    var handler = PlayerWin;
+                    if(handler != null)
+                    {
+                        handler(this, null);
+                    }
+                    return;
+                }
+            }
             InitiateMove();
         }
     }
