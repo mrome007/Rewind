@@ -47,7 +47,7 @@ public class RewindPlayer : MonoBehaviour
     {
         currentCommand.ExecuteDone -= CommandExecuteDone;
 
-        if(commands.Count > 0)
+        if(commands.Count > 1)
         {
             commands.Pop();
             Rewind();

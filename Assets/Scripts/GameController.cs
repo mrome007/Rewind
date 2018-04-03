@@ -23,6 +23,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private LayerMask tileLayerMask;
 
+    [SerializeField]
+    private GameObject RewindEffectObject;
+
     private int rewindCount;
     private int winCount;
 
@@ -75,6 +78,8 @@ public class GameController : MonoBehaviour
 
     public void RewindButtonPressed()
     {
+        RewindEffectObject.SetActive(rewindToggle.isOn);
+
         if(rewindToggle.isOn)
         {
             RewindAllPlayers();
@@ -169,6 +174,7 @@ public class GameController : MonoBehaviour
 
             buttonsToggleGroup.SetAllTogglesOff();
         }
+
     }
 
     private void PlayerMovementPlayerWin(object sender, System.EventArgs e)
