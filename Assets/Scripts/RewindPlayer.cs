@@ -54,6 +54,8 @@ public class RewindPlayer : MonoBehaviour
         }
         else
         {
+            commands.Pop();
+
             var handler = RewindDone;
             if(handler != null)
             {
