@@ -1414,7 +1414,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4ed70d26476654faba6c1e2a6e0dff26, type: 2}
+  - {fileID: 2100000, guid: c89875dd610f34f96902d7b6b10ee6a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3269,7 +3269,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4ed70d26476654faba6c1e2a6e0dff26, type: 2}
+  - {fileID: 2100000, guid: 33323f8d42961490f94e8e21e66fd17b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3422,7 +3422,7 @@ MonoBehaviour:
   currentTile: {fileID: 1346439287}
   moveSpeed: 3.5
   rewindController: {fileID: 1059277549}
-  playerColor: 2
+  playerColor: 1
 --- !u!4 &1059277551
 Transform:
   m_ObjectHideFlags: 0
@@ -3964,7 +3964,7 @@ MonoBehaviour:
   currentTile: {fileID: 351928283}
   moveSpeed: 3.5
   rewindController: {fileID: 1307392907}
-  playerColor: 1
+  playerColor: 2
 --- !u!4 &1307392906
 Transform:
   m_ObjectHideFlags: 0
@@ -4185,7 +4185,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4ed70d26476654faba6c1e2a6e0dff26, type: 2}
+  - {fileID: 2100000, guid: c89875dd610f34f96902d7b6b10ee6a4, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -6193,7 +6193,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 4ed70d26476654faba6c1e2a6e0dff26, type: 2}
+  - {fileID: 2100000, guid: 12756f298cc25481685717caa7e27ad1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
