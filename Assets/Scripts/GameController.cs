@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class GameController : MonoBehaviour 
 {
@@ -26,6 +27,9 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject RewindEffectObject;
 
+    [SerializeField]
+    private AudioSource GameAudio;
+
     private int rewindCount;
     private int winCount;
 
@@ -49,8 +53,9 @@ public class GameController : MonoBehaviour
 
     private void OnDestroy()
     {
-        foreach(var player in players)
+        for(int index = 0; index < players.Count; index++)
         {
+            var player = players[index];
             var playerMovement = player.GetComponent<PlayerMovement>();
             if(playerMovement != null)
             {
@@ -78,16 +83,21 @@ public class GameController : MonoBehaviour
 
     public void RewindButtonPressed()
     {
-        RewindEffectObject.SetActive(rewindToggle.isOn);
-
         if(rewindToggle.isOn)
         {
+            if(!players.Any(player => player.GetComponent<RewindPlayer>().HasCommands()))
+            {
+                return;
+            }
             RewindAllPlayers();
         }
         else
         {
             StopAllPlayers();
         }
+
+        GameAudio.pitch = rewindToggle.isOn ? -1f : 1f;
+        RewindEffectObject.SetActive(rewindToggle.isOn);
     }
 
     public void PlayButtonPressed()

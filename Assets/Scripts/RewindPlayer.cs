@@ -63,4 +63,9 @@ public class RewindPlayer : MonoBehaviour
             }
         }
     }
+
+    public bool HasCommands()
+    {
+        return commands.Count > 0;
+    }
 }
