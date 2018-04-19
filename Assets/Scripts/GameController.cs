@@ -51,19 +51,6 @@ public class GameController : MonoBehaviour
         }
     }
 
-    private void OnDestroy()
-    {
-        for(int index = 0; index < players.Count; index++)
-        {
-            var player = players[index];
-            var playerMovement = player.GetComponent<PlayerMovement>();
-            if(playerMovement != null)
-            {
-                playerMovement.PlayerWin -= PlayerMovementPlayerWin;
-            }
-        }
-    }
-
     private void Update()
     {
         if(Input.GetMouseButtonDown(0))
