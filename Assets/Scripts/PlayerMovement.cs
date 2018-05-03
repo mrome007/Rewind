@@ -76,7 +76,7 @@ public class PlayerMovement : MonoBehaviour
                 distance = (currTile.transform.position - transform.position).sqrMagnitude;
                 transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
                 yield return null;
-            } while(distance > 0.1);
+            } while(distance > 0.05);
         }
             
         var handler = MoveToTileDone;

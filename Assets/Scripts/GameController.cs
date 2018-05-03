@@ -198,6 +198,14 @@ public class GameController : MonoBehaviour
 
         if(winCount == players.Count)
         {
+            foreach(var player in players)
+            {
+                var playerAnimation = player.transform.GetChild(0).GetComponent<PlayerAnimation>();
+                if(playerAnimation != null)
+                {
+                    playerAnimation.PlayIdle();
+                }
+            }
             Debug.Log("WINNER");
         }
     }
