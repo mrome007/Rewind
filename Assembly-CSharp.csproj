@@ -57,6 +57,7 @@
      <Compile Include="Assets\Scripts\MoveCommand.cs" />
      <Compile Include="Assets\Scripts\MoveTile.cs" />
      <Compile Include="Assets\Scripts\MoveTileEventArgs.cs" />
+     <Compile Include="Assets\Scripts\PlayerAnimation.cs" />
      <Compile Include="Assets\Scripts\PlayerMovement.cs" />
      <Compile Include="Assets\Scripts\RewindPlayer.cs" />
  <Reference Include="UnityEngine.UI">

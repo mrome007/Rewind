@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private MoveTile.TileColor playerColor;
 
+    [SerializeField]
+    private Transform playerContainer;
+
     public event EventHandler<MoveTileEventArgs> MoveToTileDone;
     public event EventHandler PlayerWin;
 
@@ -65,13 +68,15 @@ public class PlayerMovement : MonoBehaviour
             previousTile = prevTile;
             currentTile = currTile;
 
+            var direction = currTile.transform.position - prevTile.transform.position;
+            playerContainer.transform.rotation = Quaternion.LookRotation(direction.normalized);
+
             do
             {
-                var direction = currTile.transform.position - prevTile.transform.position;
                 distance = (currTile.transform.position - transform.position).sqrMagnitude;
                 transform.Translate(direction.normalized * moveSpeed * Time.deltaTime);
                 yield return null;
-            } while(distance > 0.015);
+            } while(distance > 0.1);
         }
             
         var handler = MoveToTileDone;

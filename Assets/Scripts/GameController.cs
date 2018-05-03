@@ -116,6 +116,12 @@ public class GameController : MonoBehaviour
             {
                 playerMovement.StartMove();
             }
+
+            var playerAnimation = player.transform.GetChild(0).GetComponent<PlayerAnimation>();
+            if(playerAnimation != null)
+            {
+                playerAnimation.PlayWalk();
+            }
         }
     }
 
@@ -130,6 +136,12 @@ public class GameController : MonoBehaviour
             {
                 rewindPlayer.RewindDone += PlayerRewindDone;
                 rewindPlayer.Rewind();
+            }
+
+            var playerAnimation = player.transform.GetChild(0).GetComponent<PlayerAnimation>();
+            if(playerAnimation != null)
+            {
+                playerAnimation.PlayWalk();
             }
         }
     }
@@ -148,6 +160,12 @@ public class GameController : MonoBehaviour
             if(rewindPlayer != null)
             {
                 rewindPlayer.StopRewind();
+            }
+
+            var playerAnimation = player.transform.GetChild(0).GetComponent<PlayerAnimation>();
+            if(playerAnimation != null)
+            {
+                playerAnimation.PlayIdle();
             }
         }
     }
