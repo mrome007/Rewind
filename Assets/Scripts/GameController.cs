@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour 
 {
@@ -32,6 +33,7 @@ public class GameController : MonoBehaviour
 
     private int rewindCount;
     private int winCount;
+    private static int sceneIndex = 0;
 
     private void Awake()
     {
@@ -210,6 +212,16 @@ public class GameController : MonoBehaviour
         if(winCount == players.Count)
         {
             Debug.Log("WINNER");
+
+            ChangeLevel();
         }
+    }
+
+    private void ChangeLevel()
+    {
+        sceneIndex++;
+        sceneIndex %= SceneManager.sceneCountInBuildSettings;
+
+        SceneManager.LoadScene(sceneIndex);
     }
 }
