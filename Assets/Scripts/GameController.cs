@@ -162,10 +162,21 @@ public class GameController : MonoBehaviour
                 rewindPlayer.StopRewind();
             }
 
-            var playerAnimation = player.transform.GetChild(0).GetComponent<PlayerAnimation>();
-            if(playerAnimation != null)
+            if(playToggle.isOn || rewindToggle.isOn)
             {
-                playerAnimation.PlayIdle();
+                var playerAnimation = player.transform.GetChild(0).GetComponent<PlayerAnimation>();
+                if(playerAnimation != null)
+                {
+                    playerAnimation.PlayWalk();
+                }
+            }
+            else
+            {
+                var playerAnimation = player.transform.GetChild(0).GetComponent<PlayerAnimation>();
+                if(playerAnimation != null)
+                {
+                    playerAnimation.PlayIdle();
+                }
             }
         }
     }
@@ -198,14 +209,6 @@ public class GameController : MonoBehaviour
 
         if(winCount == players.Count)
         {
-            foreach(var player in players)
-            {
-                var playerAnimation = player.transform.GetChild(0).GetComponent<PlayerAnimation>();
-                if(playerAnimation != null)
-                {
-                    playerAnimation.PlayIdle();
-                }
-            }
             Debug.Log("WINNER");
         }
     }
