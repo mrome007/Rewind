@@ -1422,7 +1422,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: da5e077aacc2f4e4d802501f498d3020, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.5
+  m_Volume: 0.35
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -2300,7 +2300,7 @@ Prefab:
         type: 2}
       propertyPath: Up
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 297231807}
     - target: {fileID: 1447175032285900, guid: 496fde9c947bc4fcdb8f47ae86290699, type: 2}
       propertyPath: m_Name
       value: RegularTile Half (8)
@@ -2977,12 +2977,12 @@ Prefab:
         type: 2}
       propertyPath: Left
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 297231807}
     - target: {fileID: 114186481768833710, guid: 496fde9c947bc4fcdb8f47ae86290699,
         type: 2}
       propertyPath: Right
       value: 
-      objectReference: {fileID: 297231807}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 496fde9c947bc4fcdb8f47ae86290699, type: 2}
   m_IsPrefabParent: 0
@@ -7516,7 +7516,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4177359591154080, guid: bfd0396335766422b9671422d86ba351, type: 2}
       propertyPath: m_LocalRotation.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4177359591154080, guid: bfd0396335766422b9671422d86ba351, type: 2}
       propertyPath: m_LocalRotation.z
@@ -7524,7 +7524,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4177359591154080, guid: bfd0396335766422b9671422d86ba351, type: 2}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4177359591154080, guid: bfd0396335766422b9671422d86ba351, type: 2}
       propertyPath: m_RootOrder
@@ -7563,11 +7563,11 @@ Prefab:
     - target: {fileID: 114992008261308872, guid: bfd0396335766422b9671422d86ba351,
         type: 2}
       propertyPath: tileDirection
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4177359591154080, guid: bfd0396335766422b9671422d86ba351, type: 2}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 180
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfd0396335766422b9671422d86ba351, type: 2}
