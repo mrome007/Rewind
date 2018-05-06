@@ -62,7 +62,7 @@ public class GameController : MonoBehaviour
         {
             var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
-            if(Physics.Raycast(ray, out hit, 20f, tileLayerMask))
+            if(Physics.Raycast(ray, out hit, 100f, tileLayerMask))
             {
                 var moveTile = hit.collider.GetComponent<MoveTile>();
                 if(moveTile != null)
