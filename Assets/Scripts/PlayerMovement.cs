@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
 
     public event EventHandler<MoveTileEventArgs> MoveToTileDone;
     public event EventHandler PlayerWin;
+    public bool HasWon { get; private set; }
 
     private MoveTile adjacentTile;
     private MoveTile previousTile;
@@ -53,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
             moveToTileRoutine = null;
         }
 
+        HasWon = false;
         moveToTileRoutine = StartCoroutine(MoveToTile(currTile, prevTile, currAdjTile, loop));
     }
 
@@ -150,6 +152,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 if(playerColor == currentTile.Color)
                 {
+                    HasWon = true;
+
                     var handler = PlayerWin;
                     if(handler != null)
                     {

@@ -35,13 +35,11 @@ public class GameController : MonoBehaviour
     private Text levelText;
 
     private int rewindCount;
-    private int winCount;
     private static int sceneIndex = 1;
 
     private void Awake()
     {
         rewindCount = 0;
-        winCount = 0;
     }
 
     private void Start()
@@ -212,12 +210,9 @@ public class GameController : MonoBehaviour
 
     private void PlayerMovementPlayerWin(object sender, System.EventArgs e)
     {
-        winCount++;
-
-        if(winCount == players.Count)
+        var won = players.All(player => player.GetComponent<PlayerMovement>().HasWon);
+        if(won)
         {
-            Debug.Log("WINNER");
-
             ChangeLevel();
         }
     }
