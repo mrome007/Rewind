@@ -26,14 +26,17 @@ public class GameController : MonoBehaviour
     private LayerMask tileLayerMask;
 
     [SerializeField]
-    private GameObject RewindEffectObject;
+    private GameObject rewindEffectObject;
 
     [SerializeField]
-    private AudioSource GameAudio;
+    private AudioSource gameAudio;
+
+    [SerializeField]
+    private Text levelText;
 
     private int rewindCount;
     private int winCount;
-    private static int sceneIndex = 0;
+    private static int sceneIndex = 1;
 
     private void Awake()
     {
@@ -51,6 +54,8 @@ public class GameController : MonoBehaviour
                 playerMovement.PlayerWin += PlayerMovementPlayerWin;
             }
         }
+
+        levelText.text = sceneIndex.ToString();
     }
 
     private void Update()
@@ -85,8 +90,8 @@ public class GameController : MonoBehaviour
             StopAllPlayers();
         }
 
-        GameAudio.pitch = rewindToggle.isOn ? -1f : 1f;
-        RewindEffectObject.SetActive(rewindToggle.isOn);
+        gameAudio.pitch = rewindToggle.isOn ? -1f : 1f;
+        rewindEffectObject.SetActive(rewindToggle.isOn);
     }
 
     public void PlayButtonPressed()
