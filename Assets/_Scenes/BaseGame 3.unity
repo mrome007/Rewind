@@ -1426,6 +1426,11 @@ Prefab:
       propertyPath: m_Name
       value: PlayerRed
       objectReference: {fileID: 0}
+    - target: {fileID: 114458895547178860, guid: 759c17312c5be40edba3e1ea11d6a9e1,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 3.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 759c17312c5be40edba3e1ea11d6a9e1, type: 2}
   m_IsPrefabParent: 0
@@ -3142,12 +3147,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nextTile: {fileID: 0}
-  previousTile: {fileID: 1346439287}
+  previousTile: {fileID: 0}
   Up: {fileID: 0}
   Down: {fileID: 0}
   Left: {fileID: 0}
   Right: {fileID: 1346439287}
-  tileDirection: 0
+  tileDirection: 4
   tileMode: 2
   tileColor: 1
 --- !u!23 &1036505205
@@ -3907,7 +3912,7 @@ MonoBehaviour:
   Down: {fileID: 351928283}
   Left: {fileID: 1036505204}
   Right: {fileID: 636468214}
-  tileDirection: 0
+  tileDirection: 1
   tileMode: 1
   tileColor: 0
 --- !u!23 &1346439288
@@ -3969,14 +3974,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1346439286}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.6494481, z: -0, w: -0.76040596}
   m_LocalPosition: {x: -8, y: 0, z: 5}
   m_LocalScale: {x: 1.5, y: 1, z: 1.5}
   m_Children:
   - {fileID: 722965788}
   m_Father: {fileID: 664435275}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 279, z: 0}
 --- !u!1 &1356593075
 GameObject:
   m_ObjectHideFlags: 0
@@ -4335,13 +4340,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1414242024}
-  m_LocalRotation: {x: 0.13052616, y: 0, z: 0, w: 0.9914449}
-  m_LocalPosition: {x: 0, y: 6.25, z: -10.25}
+  m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
+  m_LocalPosition: {x: 0, y: 9, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 15, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 30, y: 0, z: 0}
 --- !u!1 &1446881639
 GameObject:
   m_ObjectHideFlags: 0
@@ -5455,7 +5460,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4747451537948134, guid: 759c17312c5be40edba3e1ea11d6a9e1, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -8
+      value: -3
       objectReference: {fileID: 0}
     - target: {fileID: 4747451537948134, guid: 759c17312c5be40edba3e1ea11d6a9e1, type: 2}
       propertyPath: m_LocalPosition.y
@@ -5489,7 +5494,7 @@ Prefab:
         type: 2}
       propertyPath: currentTile
       value: 
-      objectReference: {fileID: 1346439287}
+      objectReference: {fileID: 636468214}
     - target: {fileID: 1795234304954142, guid: 759c17312c5be40edba3e1ea11d6a9e1, type: 2}
       propertyPath: m_Name
       value: PlayerBlue
@@ -5523,6 +5528,11 @@ Prefab:
         type: 2}
       propertyPath: playerColor
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114458895547178860, guid: 759c17312c5be40edba3e1ea11d6a9e1,
+        type: 2}
+      propertyPath: moveSpeed
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 759c17312c5be40edba3e1ea11d6a9e1, type: 2}
@@ -5856,6 +5866,11 @@ Prefab:
       propertyPath: Right
       value: 
       objectReference: {fileID: 1533068295}
+    - target: {fileID: 114992008261308872, guid: bfd0396335766422b9671422d86ba351,
+        type: 2}
+      propertyPath: tileDirection
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bfd0396335766422b9671422d86ba351, type: 2}
   m_IsPrefabParent: 0
@@ -5973,12 +5988,17 @@ Prefab:
         type: 2}
       propertyPath: previousTile
       value: 
-      objectReference: {fileID: 585400854}
+      objectReference: {fileID: 0}
     - target: {fileID: 114540343309222032, guid: c7a64c3dc1a944a8d80f17a4b5d12d73,
         type: 2}
       propertyPath: Up
       value: 
       objectReference: {fileID: 585400854}
+    - target: {fileID: 114540343309222032, guid: c7a64c3dc1a944a8d80f17a4b5d12d73,
+        type: 2}
+      propertyPath: tileDirection
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c7a64c3dc1a944a8d80f17a4b5d12d73, type: 2}
   m_IsPrefabParent: 0
